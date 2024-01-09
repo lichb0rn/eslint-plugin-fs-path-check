@@ -1,6 +1,12 @@
 # eslint-plugin-fs-path-check
 
-Feature sliced architecure path checker
+Feature sliced architecure path checker. Check
+[Feature-sliced design Guide](https://feature-sliced.design) for more info.
+
+## Warn
+
+The plugin is in development. Right now works only if project source code is located under 'src/'
+folder.
 
 ## Installation
 
