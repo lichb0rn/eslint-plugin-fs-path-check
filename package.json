@@ -10,6 +10,10 @@
     "author": "Miroslav Taleiko",
     "main": "./lib/index.js",
     "exports": "./lib/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lichb0rn/eslint-plugin-fs-path-check.git"
+    },
     "scripts": {
         "lint": "npm-run-all \"lint:*\"",
         "lint:eslint-docs": "npm-run-all \"update:eslint-docs -- --check\"",
