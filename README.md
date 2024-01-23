@@ -42,3 +42,13 @@ Then configure the rules you want to use under the rules section.
     }
 }
 ```
+
+If have alias in your project you should configure it:
+
+```json
+{
+    "rules": {
+        "fs-path-check/fs-path-check": ["warn", { "alias": "@" }]
+    }
+}
+```
