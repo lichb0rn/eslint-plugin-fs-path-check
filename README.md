@@ -5,8 +5,7 @@ Feature sliced architecure path checker. Check
 
 ## Warn
 
-The plugin is in development. Right now works only if project source code is located under 'src/'
-folder.
+The plugin is in development.
 
 ## Installation
 
@@ -38,7 +37,8 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "fs-path-check/fs-path-check": "warn"
+        "fs-path-check/fs-path-check": "warn",
+        "fs-path-check/public-api-imports": "warn"
     }
 }
 ```
