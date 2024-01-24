@@ -1,7 +1,7 @@
-# Feature sliced relative path checker (`fs-path-check`)
+# Check if something is imported from the inside of a module and not from public api (`public-api-imports`)
 
-This rule checks for compliance with the Feature-Sliced Design (FSD) recommendations for importing
-modules from the same layer.
+This rule checks if a module is imported from the inside of the module structure and not from public
+api.
 
 ## Rule Details
 
@@ -11,16 +11,14 @@ Examples of **incorrect** code for this rule:
 
 ```js
 // file features/someFeature/ui/FeatureComponent.jsx
-import { useArticleRecommendationsList } from 'features/someFeature/api/featiureApi';
+import { useEntity } from 'entities/SomeEntity/lib/hooks/useEntity';
 ```
-
-All imports from the same layer should be relative.
 
 Examples of **correct** code for this rule:
 
 ```js
 // file features/someFeature/ui/FeatureComponent.jsx
-import { useArticleRecommendationsList } from '../../api/featiureApi';
+import { useEntity } from 'entities/SomeEntity';
 ```
 
 ### Options
@@ -28,7 +26,7 @@ import { useArticleRecommendationsList } from '../../api/featiureApi';
 If you use aliases in your project, you should configure it
 
 ```js
-"fs-path-check/fs-path-check": ["warn", { "alias": "@" }]
+"fs-path-check/public-api-imports": ["warn", { "alias": "@" }]
 ```
 
 ## When Not To Use It
