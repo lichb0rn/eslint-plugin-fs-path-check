@@ -52,3 +52,31 @@ If have alias in your project you should configure it:
     }
 }
 ```
+
+If you want to import something not from public api (`index.{js|ts}`), you can make a testing public
+api.
+
+Suppose you you want to import a reducer, which is not exported from you `index.{js|ts}` public api,
+to your Storybook decorator or test. You can decalre a 'testing public api' - `testing.{js|ts}`:
+
+```json
+export { loginReducer } from './model/slice/loginSlice';
+```
+
+And then add a regex to your `.eslintrc` file:
+
+```json
+{
+    "rules": {
+        "fs-path-check/public-api-imports": [
+            "warn",
+            {
+                "alias": "@",
+                "testFilesPatterns": ["**/*.test.js", "**/StorybookDecorator.jsx"]
+            }
+        ]
+    }
+}
+```
+
+Not it's prerfectly legint to import `loginReducer` to your `StorybookDecorator.jsx`.

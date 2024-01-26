@@ -29,6 +29,32 @@ If you use aliases in your project, you should configure it
 "fs-path-check/public-api-imports": ["warn", { "alias": "@" }]
 ```
 
+Also you can allow imports from testing public api to specific files:
+
+```js
+// file: features/someFeature/testing.ts
+export { someReducer } from './model/slices/someSlice.js';
+```
+
+```js
+// file: StorybookDecorator.jsx
+import { someReducre } from 'features/someFeature/testing';
+```
+
+```js
+{
+    "rules": {
+        "fs-path-check/public-api-imports": [
+            "warn",
+            {
+                "alias": "@",
+                "testFilesPatterns": ["**/*.test.js", "**/StorybookDecorator.jsx"]
+            }
+        ]
+    }
+}
+```
+
 ## When Not To Use It
 
 The rule is made fro spicific use case to work the Feature-Sliced Design methology. Not suitable for

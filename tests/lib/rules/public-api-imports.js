@@ -28,6 +28,28 @@ ruleTester.run('public-api-imports', rule, {
             errors: [],
             options: aliasOptions,
         },
+        {
+            filename: '/User/user/project/src/entities/file.test.ts',
+            code: "import { AddCommentForm } from '@/features/AddComment/testing'",
+            errors: [],
+            options: [
+                {
+                    alias: '@',
+                    testFilesPatterns: ['**/*.test.ts', '**/SomeDecorator.tsx'],
+                },
+            ],
+        },
+        {
+            filename: '/User/user/project/src/entities/SomeDecorator.tsx',
+            code: "import { AddCommentForm } from '@/features/AddComment/testing'",
+            errors: [],
+            options: [
+                {
+                    alias: '@',
+                    testFilesPatterns: ['**/*.test.ts', '**/SomeDecorator.tsx'],
+                },
+            ],
+        },
     ],
 
     invalid: [
@@ -35,11 +57,32 @@ ruleTester.run('public-api-imports', rule, {
             code: "import { someActions, someReducer } from '@/entities/SomeEntity/model/slice.js'",
             errors: [
                 {
-                    message:
-                        'Avoid importing from the inside of the module. Use public api instead.',
+                    messageId: 'avoidImportFromModule',
                 },
             ],
             options: aliasOptions,
+        },
+        {
+            filename: '/User/user/project/src/entities/SomeDecorator.tsx',
+            code: "import { AddCommentForm } from '@/features/AddComment/testing/files.ts'",
+            errors: [{ messageId: 'avoidImportFromModule' }],
+            options: [
+                {
+                    alias: '@',
+                    testFilesPatterns: ['**/*.test.ts', '**/SomeDecorator.tsx'],
+                },
+            ],
+        },
+        {
+            filename: '/User/user/project/src/entities/forbidden.js',
+            code: "import { AddCommentForm } from '@/features/AddComment/testing'",
+            errors: [{ messageId: 'avoidImportFromTesting' }],
+            options: [
+                {
+                    alias: '@',
+                    testFilesPatterns: ['**/*.test.js', '**/SomeDecorator.jsx'],
+                },
+            ],
         },
     ],
 });
