@@ -38,7 +38,8 @@ Then configure the rules you want to use under the rules section.
 {
     "rules": {
         "fs-path-check/fs-path-check": "warn",
-        "fs-path-check/public-api-imports": "warn"
+        "fs-path-check/public-api-imports": "warn",
+        "fs-path-check/layer-imports": "warn"
     }
 }
 ```
@@ -80,3 +81,14 @@ And then add a regex to your `.eslintrc` file:
 ```
 
 Not it's prerfectly legint to import `loginReducer` to your `StorybookDecorator.jsx`.
+
+You can also configure ignore patterns for import from top layers to bottom (i.e. from 'app' to
+'entity'):
+
+```json
+"fs-path-check/layer-imports": ["warn", {
+        "alias": "@",
+        "ignoreImportPatterns": ["**/StoreProvider"]
+    }
+]
+```
