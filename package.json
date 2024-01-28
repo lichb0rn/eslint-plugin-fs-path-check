@@ -1,6 +1,6 @@
 {
     "name": "eslint-plugin-fs-path-check",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Feature sliced architecure path checker",
     "keywords": [
         "eslint",
